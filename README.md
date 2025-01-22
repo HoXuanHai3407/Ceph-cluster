@@ -9,7 +9,9 @@ Ceph is an open-source, distributed storage system that provides object, block, 
 
 This command downloads the Cephadm binary from the official Ceph repository and makes it executable. The `curl` command fetches the file, `chmod +x` assigns execution permissions, and `mv` moves the binary to a directory included in the system’s PATH for easy access.
 ```
-curl -L -o cephadm https://raw.githubusercontent.com/ceph/ceph/quincy/src/cephadm/cephadm chmod +x cephadm sudo mv cephadm /usr/local/bin/
+curl -L -o cephadm https://raw.githubusercontent.com/ceph/ceph/quincy/src/cephadm/cephadm 
+chmod +x cephadm 
+sudo mv cephadm /usr/local/bin/
 
 ```
 ## Bootstrap the Cluster
@@ -28,7 +30,8 @@ ssh-copy-id root@<NODE_IP> ceph orch host add <NODE_NAME> <NODE_IP>
 
 The `ceph orch device ls` command lists all available storage devices across the nodes. The `ceph orch daemon add osd` command assigns a specific device to the Object Storage Daemon (OSD) on a given node, enabling it to store data.
 ```
-ceph orch device ls ceph orch daemon add osd <NODE_NAME>:/dev/<DEVICE>
+ceph orch device ls
+ceph orch daemon add osd <NODE_NAME>:/dev/<DEVICE>
 ```
 ## Verify the Cluster
 
@@ -44,4 +47,4 @@ https://<PRIMARY_NODE_IP>:8443
 ```
 ## Conclusion
 
-Deploying a Ceph cluster using Cephadm simplifies the process and ensures scalability and relia
+If you don't want to run multiple commands manually, Cephadm is an excellent tool for quickly deploying a Ceph cluster. Its streamlined process saves time and ensures consistency across deployments.
